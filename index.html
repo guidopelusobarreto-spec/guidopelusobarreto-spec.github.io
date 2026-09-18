@@ -190,6 +190,21 @@ p{margin:0 0 .9rem}
 .pick{width:100%;margin-top:auto;padding:.8rem 1rem;border:0;border-radius:.45rem;background:var(--veda);color:#fff;font:700 1rem var(--sans);cursor:pointer}
 .pick:active{transform:scale(.98)}
 
+/* Galeria, valoracion, configurador */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.5rem}
+.gal figure{margin:0;border-radius:.6rem;overflow:hidden;border:1px solid var(--line)}
+.gal figure:first-child{grid-column:1/-1}
+.gal img{width:100%;height:100%;object-fit:cover;display:block}
+.rating{font-size:1.1rem;margin-bottom:.3rem}
+.rating b{color:var(--sky);font-size:1.4rem}
+.linkbtn{background:none;border:0;color:var(--sky);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+.conf li label{display:flex;align-items:center;gap:.5rem;cursor:pointer}
+.conf input{width:1.15rem;height:1.15rem;accent-color:var(--sky)}
+.conf .zx{color:var(--muted);font-size:.9rem}
+.conf-total{margin:.5rem 0 .1rem;font-size:1.05rem}
+.conf-total b{color:var(--sky)}
+.conf-inc{margin:0;font-size:.9rem;color:var(--muted)}
+
 /* Resto de secciones */
 section.block{padding:2.5rem 0;border-top:1px solid var(--line)}
 section.block h2{margin-bottom:1rem}
@@ -211,7 +226,7 @@ section.block h2{margin-bottom:1rem}
 .hours td{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .book .veda-logo{width:11rem;border:1px solid var(--line);margin-bottom:1rem}
 .phone{display:inline-block;font:600 clamp(2.2rem,8vw,2.8rem) var(--serif);color:var(--sky);text-decoration:none;margin:.2rem 0 .5rem}
-footer{border-top:1px solid var(--line);color:var(--muted);padding:2rem 0 5.5rem;font-size:.9rem}
+footer{border-top:1px solid var(--line);color:var(--muted);padding:2rem 0 10rem;font-size:.9rem}
 footer p{margin:.2rem 0}
 
 /* Barra fija y hoja de reserva */
@@ -286,8 +301,8 @@ footer p{margin:.2rem 0}
   <h1>Гуидо Пелусо Барето</h1>
   <p class="sub" translate="no">Guido Peluso Barreto</p>
   <p class="sub">Мануален терапевт във VEDA Swimming Pool &amp; Spa, София</p>
-  <p class="claim">Болката не е нормална.</p>
-  <p class="lead">Нито сутрешната скованост, нито главоболието от стиснати зъби, нито тежките крака вечер. Това са сигнали — разчитам ги от 25 години.</p>
+  <p class="claim">Тялото дава сигнали. Разчитам ги от 25 години.</p>
+  <p class="lead">Не работя само там, където боли: често болката е отразена — идва от друго място. Първо намирам причината, после работя върху нея.</p>
   <div class="actions">
    <a class="btn btn-main" href="#vodach">Изберете масаж</a>
    <a class="btn" href="tel:+359884300333">Обадете се на рецепцията</a>
@@ -341,11 +356,11 @@ footer p{margin:.2rem 0}
 <article class="card rec" style="--i:0" data-name="Стъпала Без Болка" data-min="40" data-eur="60"><p class="tier">Препоръка на Гуидо</p><div class="card-head"><h4>Стъпала Без Болка</h4><p class="price">60 €</p></div><p class="meta"><span class="dur">40 мин</span><span>дълбокотъканен + миофасциален, стъпала и прасци</span></p><p class="desc">При плантарен фасциит, болка в петата и умора след дълго ходене или стоене прав.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>натиск: силен</p><button class="pick" type="button">Избирам този масаж</button></article>
 </div></section>
 <section class="panel" id="p-kraka" hidden><h3 tabindex="-1">Тежки крака и отоци</h3><div class="cards">
-<article class="card" style="--i:0" data-name="Леки Крака" data-min="30" data-eur="40" data-short="1" data-alt="Детокс и Лекота" data-altmin="70"><p class="tier">Бързо облекчение</p><div class="card-head"><h4>Леки Крака</h4><p class="price">40 €</p></div><p class="meta"><span class="dur">30 мин</span><span>лимфен дренаж, само крака</span></p><p class="desc">Намалява отоците, тежестта и задържането на течности в краката.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>натиск: лек</p><p class="days">Само от понеделник до четвъртък, 16:00 – 21:00 ч.</p><p class="live" hidden></p><button class="pick" type="button">Избирам този масаж</button></article>
+<article class="card" style="--i:0" data-name="Леки Крака" data-min="30" data-eur="40"><p class="tier">Бързо облекчение</p><div class="card-head"><h4>Леки Крака</h4><p class="price">40 €</p></div><p class="meta"><span class="dur">30 мин</span><span>лимфен дренаж, само крака</span></p><p class="desc">Намалява отоците, тежестта и задържането на течности в краката.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>натиск: лек</p><button class="pick" type="button">Избирам този масаж</button></article>
 <article class="card rec" style="--i:1" data-name="Детокс и Лекота" data-min="70" data-eur="80"><p class="tier">Препоръка на Гуидо</p><div class="card-head"><h4>Детокс и Лекота</h4><p class="price">80 €</p></div><p class="meta"><span class="dur">70 мин</span><span>лимфен дренаж, цяло тяло</span></p><p class="desc">При тежки крака и отоци. Усещането за лекота идва още след първата сесия.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>натиск: лек</p><button class="pick" type="button">Избирам този масаж</button></article>
 </div></section>
 <section class="panel" id="p-figura" hidden><h3 tabindex="-1">Целулит и оформяне</h3><div class="cards">
-<article class="card rec" style="--i:0" data-name="Изваяни Крака" data-min="40" data-eur="50"><p class="tier">Препоръка на Гуидо</p><div class="card-head"><h4>Изваяни Крака</h4><p class="price">50 €</p></div><p class="meta"><span class="dur">40 мин</span><span>антицелулитен, крака</span></p><p class="desc">Стимулира кръвообращението, подпомага оформянето и стягането на кожата. Интензивна техника — може да е болезнено.</p><div class="addons"><p>Комбинирайте с:</p><ul><li><span>+ корем</span><span>+10 мин</span><span class="price">+10 €</span></li><li><span>+ ръце</span><span>+20 мин</span><span class="price">+20 €</span></li><li><span>+ корем и ръце</span><span>+30 мин</span><span class="price">+30 €</span></li></ul></div><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>натиск: силен</p><button class="pick" type="button">Избирам този масаж</button></article>
+<article class="card rec" style="--i:0" data-name="Изваяни Крака" data-min="40" data-eur="50"><p class="tier">Препоръка на Гуидо</p><div class="card-head"><h4>Изваяни Крака</h4><p class="price">50 €</p></div><p class="meta"><span class="dur">40 мин</span><span>антицелулитен, крака</span></p><p class="desc">Стимулира кръвообращението, подпомага оформянето и стягането на кожата. Интензивна техника — може да е болезнено.</p><div class="addons conf" data-base-min="40" data-base-eur="50"><p>Изберете зони:</p><ul><li><span>крака (основа)</span><span class="zx">40 мин</span><span class="price">50 €</span></li><li><label><input type="checkbox" class="zone-chk" data-min="10" data-eur="10" data-zone="корем"> <span>+ корем</span></label><span class="zx">+10 мин</span><span class="price">+10 €</span></li><li><label><input type="checkbox" class="zone-chk" data-min="20" data-eur="20" data-zone="ръце"> <span>+ ръце</span></label><span class="zx">+20 мин</span><span class="price">+20 €</span></li></ul><p class="conf-total">Общо: <b>40 мин</b> · <b>50 €</b></p><p class="conf-inc">Включва: крака</p></div><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>натиск: силен</p><button class="pick" type="button">Избирам този масаж</button></article>
 </div></section>
 <section class="panel" id="p-tyalo" hidden><h3 tabindex="-1">Цялото тяло</h3><div class="cards">
 <article class="card rec" style="--i:0" data-name="Комбиниран Възстановяващ" data-min="70" data-eur="85"><p class="tier">Препоръка на Гуидо</p><div class="card-head"><h4>Комбиниран Възстановяващ</h4><p class="price">85 €</p></div><p class="meta"><span class="dur">70 мин</span><span>дълбокотъканен + миофасциален, цяло тяло</span></p><p class="desc">За хора с хронично напрежение, стрес и дълги часове пред компютъра.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>натиск: силен</p><button class="pick" type="button">Избирам този масаж</button></article>
@@ -358,7 +373,7 @@ footer p{margin:.2rem 0}
 <article class="card rec" style="--i:1" data-name="Ритуал „Черно Море“" data-min="50" data-eur="65"><p class="tier">Препоръка на Гуидо</p><div class="card-head"><h4>Ритуал „Черно Море“</h4><p class="price">65 €</p></div><p class="meta"><span class="dur">50 мин</span><span>цяло тяло, лечебно масло от луга</span></p><p class="desc">Уникален ритуал с минерализирано масло с черноморска луга — дълбока релаксация, възстановяване и подхранване на цялото тяло.</p><p class="tag">Релаксиращ ритуал, не е дълбокотъканен масаж</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>натиск: лек</p><button class="pick" type="button">Избирам този масаж</button></article>
 </div></section>
    </div>
-   <p class="hint">Не сте сигурни? Изберете най-близкото и ще уточним на място.</p>
+   <p class="hint">Имате въпрос? <button type="button" class="linkbtn" data-goto="za-men">Вижте често задаваните въпроси</button>.</p>
   </div>
  </section>
 
@@ -377,8 +392,16 @@ footer p{margin:.2rem 0}
     </figure>
    </div>
 
+   <h3 style="font-size:1.6rem;margin:2rem 0 .8rem">В работа</h3>
+   <div class="gal" id="gal">
+    <figure><img src="trabajo-1.jpg" alt="Гуидо Пелусо Барето по време на терапия" width="768" height="1376" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+    <figure><img src="trabajo-2.jpg" alt="Работа върху ръката и рамото" width="768" height="1376" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+    <figure><img src="trabajo-3.jpg" alt="Гуидо Пелусо Барето в кабинета" width="768" height="1376" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+   </div>
+
    <div class="rev">
-    <p>Хората описват работата ми в Google. Прочетете ги сами — не подбирам кои да видите.</p>
+    <p class="rating"><b>5,0</b> ★★★★★ · 30 отзива в Google</p>
+    <p>Прочетете ги сами — не подбирам кои да видите.</p>
     <a class="btn btn-main" href="https://maps.app.goo.gl/oKmQrc2Mxr9LZEcx5?g_st=ac" rel="noopener">Вижте отзивите в Google</a>
     <a class="btn" href="https://g.page/r/CTXyCYQ5FcvwEBE/review" rel="noopener">Напишете отзив</a>
    </div>
@@ -424,8 +447,8 @@ footer p{margin:.2rem 0}
 <article class="card" style="--i:0" data-name="Стъпала Без Болка" data-min="40" data-eur="60"><div class="card-head"><h4>Стъпала Без Болка</h4><p class="price">60 €</p></div><p class="meta"><span class="dur">40 мин</span><span>дълбокотъканен + миофасциален, стъпала и прасци</span></p><p class="desc">При плантарен фасциит, болка в петата и умора след дълго ходене или стоене прав.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>натиск: силен</p><button class="pick" type="button">Избирам този масаж</button></article>
 </div></details>
 <details class="group"><summary><h3>За крака и фигура</h3><span class="g-note">Лекота и оформяне.</span></summary><div class="cards">
-<article class="card" style="--i:0" data-name="Леки Крака" data-min="30" data-eur="40" data-short="1" data-alt="Детокс и Лекота" data-altmin="70"><div class="card-head"><h4>Леки Крака</h4><p class="price">40 €</p></div><p class="meta"><span class="dur">30 мин</span><span>лимфен дренаж, само крака</span></p><p class="desc">Намалява отоците, тежестта и задържането на течности в краката.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>натиск: лек</p><p class="days">Само от понеделник до четвъртък, 16:00 – 21:00 ч.</p><p class="live" hidden></p><button class="pick" type="button">Избирам този масаж</button></article>
-<article class="card" style="--i:0" data-name="Изваяни Крака" data-min="40" data-eur="50"><div class="card-head"><h4>Изваяни Крака</h4><p class="price">50 €</p></div><p class="meta"><span class="dur">40 мин</span><span>антицелулитен, крака</span></p><p class="desc">Стимулира кръвообращението, подпомага оформянето и стягането на кожата. Интензивна техника — може да е болезнено.</p><div class="addons"><p>Комбинирайте с:</p><ul><li><span>+ корем</span><span>+10 мин</span><span class="price">+10 €</span></li><li><span>+ ръце</span><span>+20 мин</span><span class="price">+20 €</span></li><li><span>+ корем и ръце</span><span>+30 мин</span><span class="price">+30 €</span></li></ul></div><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>натиск: силен</p><button class="pick" type="button">Избирам този масаж</button></article>
+<article class="card" style="--i:0" data-name="Леки Крака" data-min="30" data-eur="40"><div class="card-head"><h4>Леки Крака</h4><p class="price">40 €</p></div><p class="meta"><span class="dur">30 мин</span><span>лимфен дренаж, само крака</span></p><p class="desc">Намалява отоците, тежестта и задържането на течности в краката.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>натиск: лек</p><button class="pick" type="button">Избирам този масаж</button></article>
+<article class="card" style="--i:0" data-name="Изваяни Крака" data-min="40" data-eur="50"><div class="card-head"><h4>Изваяни Крака</h4><p class="price">50 €</p></div><p class="meta"><span class="dur">40 мин</span><span>антицелулитен, крака</span></p><p class="desc">Стимулира кръвообращението, подпомага оформянето и стягането на кожата. Интензивна техника — може да е болезнено.</p><div class="addons conf" data-base-min="40" data-base-eur="50"><p>Изберете зони:</p><ul><li><span>крака (основа)</span><span class="zx">40 мин</span><span class="price">50 €</span></li><li><label><input type="checkbox" class="zone-chk" data-min="10" data-eur="10" data-zone="корем"> <span>+ корем</span></label><span class="zx">+10 мин</span><span class="price">+10 €</span></li><li><label><input type="checkbox" class="zone-chk" data-min="20" data-eur="20" data-zone="ръце"> <span>+ ръце</span></label><span class="zx">+20 мин</span><span class="price">+20 €</span></li></ul><p class="conf-total">Общо: <b>40 мин</b> · <b>50 €</b></p><p class="conf-inc">Включва: крака</p></div><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>натиск: силен</p><button class="pick" type="button">Избирам този масаж</button></article>
 </div></details>
 <details class="group"><summary><h3>Авторски терапии</h3><span class="g-note">Създадени от Гуидо, не се предлагат другаде.</span></summary><div class="cards">
 <article class="card" style="--i:0" data-name="Детокс и Лекота" data-min="70" data-eur="80"><div class="card-head"><h4>Детокс и Лекота</h4><p class="price">80 €</p></div><p class="meta"><span class="dur">70 мин</span><span>лимфен дренаж, цяло тяло</span></p><p class="desc">При тежки крака и отоци. Усещането за лекота идва още след първата сесия.</p><p class="press"><span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>натиск: лек</p><button class="pick" type="button">Избирам този масаж</button></article>
@@ -573,6 +596,41 @@ footer p{margin:.2rem 0}
     });
   });
 
+  // Enlaces internos a otra vista
+  document.querySelectorAll('[data-goto]').forEach(function (b) {
+    b.addEventListener('click', function () { showView(b.dataset.goto, true); });
+  });
+
+  // Configurador de zonas: actualiza tiempo, precio y contenido en vivo
+  document.querySelectorAll('.conf').forEach(function (conf) {
+    var card = conf.closest('.card');
+    var baseMin = parseInt(conf.dataset.baseMin, 10);
+    var baseEur = parseInt(conf.dataset.baseEur, 10);
+    var total = conf.querySelector('.conf-total');
+    var inc = conf.querySelector('.conf-inc');
+    function update() {
+      var min = baseMin, eur = baseEur, zonas = ['крака'];
+      conf.querySelectorAll('.zone-chk').forEach(function (c) {
+        if (c.checked) {
+          min += parseInt(c.dataset.min, 10);
+          eur += parseInt(c.dataset.eur, 10);
+          zonas.push(c.dataset.zone);
+        }
+      });
+      total.innerHTML = 'Общо: <b>' + min + ' мин</b> · <b>' + eur + ' €</b>';
+      inc.textContent = 'Включва: ' + zonas.join(', ');
+      card.dataset.min = min;
+      card.dataset.eur = eur;
+      var head = card.querySelector('.card-head .price');
+      if (head) head.textContent = eur + ' €';
+      var dur = card.querySelector('.meta .dur');
+      if (dur) dur.textContent = min + ' мин';
+      card.dataset.zones = zonas.join(', ');
+    }
+    conf.querySelectorAll('.zone-chk').forEach(function (c) { c.addEventListener('change', update); });
+    update();
+  });
+
   // Hoja de reserva
   var sheet = document.getElementById('sheet');
   var backdrop = document.getElementById('backdrop');
@@ -582,7 +640,8 @@ footer p{margin:.2rem 0}
     clearTimeout(hideTimer);
     lastFocus = btn;
     document.getElementById('s-name').textContent = card.dataset.name;
-    document.getElementById('s-meta').textContent = card.dataset.min + ' мин, ' + card.dataset.eur + ' €';
+    document.getElementById('s-meta').textContent = card.dataset.min + ' мин, ' + card.dataset.eur + ' €' +
+      (card.dataset.zones ? ' · ' + card.dataset.zones : '');
     var note = document.getElementById('s-note');
     if (card.dataset.short) { note.textContent = liveText(card); note.hidden = false; }
     else { note.hidden = true; }
