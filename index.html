@@ -229,7 +229,35 @@ footer p{margin:.2rem 0}
 .s-actions{display:grid;gap:.6rem}
 .s-actions .btn{text-align:center}
 
+/* Vistas tipo app */
+.view[hidden]{display:none}
+.appnav{position:fixed;left:0;right:0;bottom:0;z-index:12;display:grid;grid-template-columns:repeat(4,1fr);background:#07111A;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.appnav button{background:none;border:0;color:var(--muted);font:600 .82rem var(--sans);padding:.95rem .2rem;cursor:pointer;line-height:1.2;min-height:3rem}
+.appnav button[aria-current="true"]{color:var(--sky);box-shadow:inset 0 2px 0 var(--sky)}
+.callbar{bottom:3.1rem}
+
+/* Reseñas, preguntas y primera visita */
+.rev{border:1px solid var(--line);border-radius:.8rem;padding:1.1rem;background:var(--surface);margin-bottom:1rem}
+.rev p{margin:0 0 .9rem}
+.rev .btn{display:block;text-align:center;margin-bottom:.5rem}
+.steps-list{list-style:none;counter-reset:v;margin:0;padding:0}
+.steps-list li{counter-increment:v;display:flex;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.steps-list li:last-child{border-bottom:0}
+.steps-list li::before{content:counter(v);flex:none;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--veda);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.faq{border:1px solid var(--line);border-radius:.6rem;margin-bottom:.5rem;background:var(--surface)}
+.faq summary{cursor:pointer;list-style:none;padding:.85rem 1rem;font:600 1.15rem var(--serif);display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--sans);color:var(--sky)}
+.faq[open] summary::after{content:"–"}
+.faq p{margin:0;padding:0 1rem 1rem}
+
 @media (min-width:48rem){
+  .appnav{position:sticky;top:1rem;bottom:auto;display:flex;flex-direction:column;background:transparent;border:0;border-left:1px solid var(--line);padding:0}
+  .appnav button{text-align:left;padding:.6rem 1rem;font-size:.95rem}
+  .appnav button[aria-current="true"]{box-shadow:inset 2px 0 0 var(--sky)}
+  .shell{display:grid;grid-template-columns:1fr 12rem;gap:2rem;max-width:60rem;margin:0 auto;padding:0 1.25rem;align-items:start}
+  .shell .wrap{padding:0;max-width:none}
+
   .tiles{grid-template-columns:repeat(3,1fr)}
   .tile.wide{grid-column:1/-1}
   .cards{grid-template-columns:1fr 1fr}
@@ -253,7 +281,7 @@ footer p{margin:.2rem 0}
  </div>
 </div>
 
-<header class="hero">
+<header class="hero" id="hero">
  <div class="wrap">
   <h1>Гуидо Пелусо Барето</h1>
   <p class="sub" translate="no">Guido Peluso Barreto</p>
@@ -267,8 +295,9 @@ footer p{margin:.2rem 0}
  </div>
 </header>
 
+<div class="shell">
 <main>
- <section class="guide" id="vodach">
+ <section class="guide view" id="vodach">
   <div class="wrap">
    <h2>Какво ви притеснява?</h2>
    <ol class="steps">
@@ -333,7 +362,7 @@ footer p{margin:.2rem 0}
   </div>
  </section>
 
- <section class="block" id="za-men">
+ <section class="block view" id="za-men" hidden>
   <div class="wrap">
    <h2>За мен</h2>
    <div class="about">
@@ -347,10 +376,33 @@ footer p{margin:.2rem 0}
      <img src="guido-peluso-barreto.jpg" alt="Гуидо Пелусо Барето, мануален терапевт" width="600" height="750" loading="lazy" onerror="this.closest('figure').remove()">
     </figure>
    </div>
+
+   <div class="rev">
+    <p>Хората описват работата ми в Google. Прочетете ги сами — не подбирам кои да видите.</p>
+    <a class="btn btn-main" href="https://maps.app.goo.gl/oKmQrc2Mxr9LZEcx5?g_st=ac" rel="noopener">Вижте отзивите в Google</a>
+    <a class="btn" href="https://g.page/r/CTXyCYQ5FcvwEBE/review" rel="noopener">Напишете отзив</a>
+   </div>
+
+   <h3 style="font-size:1.6rem;margin:2rem 0 .8rem">Първото посещение</h3>
+   <ol class="steps-list">
+    <li>Запазвате час на рецепцията на VEDA.</li>
+    <li>Идвате 5 – 10 минути по-рано и казвате, че сте при Гуидо.</li>
+    <li>Започваме с кратък разговор: къде боли, откога и какво сте пробвали досега.</li>
+    <li>Работя върху причината, не само върху мястото, което боли.</li>
+    <li>Накрая Ви казвам какво виждам и какъв е планът оттук нататък.</li>
+   </ol>
+
+   <h3 style="font-size:1.6rem;margin:2rem 0 .8rem">Често задавани въпроси</h3>
+   <details class="faq"><summary>Боли ли?</summary><p>Дълбоката работа може да е неприятна на моменти, но работя в границата, която понасяте. Кажете ми, ако натискът е твърде силен. Ритуал „Черно Море“ и лимфният дренаж са с лек натиск и без болка.</p></details>
+   <details class="faq"><summary>Колко сесии са нужни?</summary><p>Зависи от проблема и откога го имате. След първата сесия ще Ви кажа какво виждам и какъв план предлагам.</p></details>
+   <details class="faq"><summary>Мога ли с дискова херния?</summary><p>Да, работя с такива случаи. Кажете ми диагнозата и оплакванията преди сесията. При скорошна операция или остро възпаление първо се консултирайте с лекуващия лекар.</p></details>
+   <details class="faq"><summary>Мога ли след онкологично лечение?</summary><p>Имам опит с пациенти във възстановяване след онкологично лечение, включително лимфен оток. Нужно е съгласието на лекуващия Ви лекар.</p></details>
+   <details class="faq"><summary>Какво да облека?</summary><p>Нищо специално. Всичко необходимо е на място.</p></details>
+   <details class="faq"><summary>Как да стигна до кабинета?</summary><p>Влизате във VEDA Swimming Pool &amp; Spa, ж.к. Младост 1 (Мусагеница), и казвате на рецепцията, че имате час при Гуидо.</p></details>
   </div>
  </section>
 
- <section class="block" id="menu">
+ <section class="block view" id="menu" hidden>
   <div class="wrap">
    <h2>Цялото меню</h2>
    <p class="muted">Всички цени са в евро. Ограничен брой сеанси на ден.</p>
@@ -384,7 +436,7 @@ footer p{margin:.2rem 0}
   </div>
  </section>
 
- <section class="block" id="chas">
+ <section class="block view" id="chas" hidden>
   <div class="wrap info">
    <div>
     <h2>Работно време</h2>
@@ -405,6 +457,13 @@ footer p{margin:.2rem 0}
   </div>
  </section>
 </main>
+ <nav class="appnav" aria-label="Раздели">
+  <button type="button" data-view="vodach" aria-current="true">Изберете</button>
+  <button type="button" data-view="menu" aria-current="false">Меню</button>
+  <button type="button" data-view="za-men" aria-current="false">За мен</button>
+  <button type="button" data-view="chas" aria-current="false">Час</button>
+ </nav>
+</div>
 
 <footer>
  <div class="wrap">
@@ -463,6 +522,29 @@ footer p{margin:.2rem 0}
     el.textContent = liveText(el.closest('.card'));
     el.hidden = false;
   });
+
+  // Vistas tipo app (una sección cada vez, con navegación fija)
+  var hero = document.getElementById('hero');
+  var views = [].slice.call(document.querySelectorAll('.view'));
+  var navBtns = [].slice.call(document.querySelectorAll('.appnav button'));
+  function showView(id, push) {
+    var target = document.getElementById(id);
+    if (!target || !target.classList.contains('view')) id = 'vodach';
+    views.forEach(function (v) { v.hidden = v.id !== id; });
+    navBtns.forEach(function (b) { b.setAttribute('aria-current', String(b.dataset.view === id)); });
+    hero.hidden = id !== 'vodach';
+    if (push) {
+      if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+      window.scrollTo(0, 0);
+    }
+  }
+  navBtns.forEach(function (b) {
+    b.addEventListener('click', function () { showView(b.dataset.view, true); });
+  });
+  window.addEventListener('hashchange', function () {
+    showView(location.hash.replace('#', ''), false);
+  });
+  showView((location.hash || '#vodach').replace('#', ''), false);
 
   // Asistente: abrir un panel con revelado circular desde el botón pulsado
   var tiles = Array.prototype.slice.call(document.querySelectorAll('.tile'));
@@ -541,5 +623,6 @@ footer p{margin:.2rem 0}
   });
 })();
 </script>
+<!-- Contador de visitas: aqui va la linea de Cloudflare Web Analytics -->
 </body>
 </html>
