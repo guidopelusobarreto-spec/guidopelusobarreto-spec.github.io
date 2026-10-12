@@ -370,4 +370,22 @@ function bindSettings() {
   });
 }
 
+/* ---------- instalación (PWA) ---------- */
+let deferredInstall = null;
+const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredInstall = e; if (!isStandalone()) $('#btnInstall').hidden = false; });
+window.addEventListener('appinstalled', () => { deferredInstall = null; $('#btnInstall').hidden = true; $('#installHelp').hidden = true; toast('App instalada'); });
+window.addEventListener('load', () => { if (!isStandalone()) setTimeout(() => { $('#btnInstall').hidden = false; }, 1500); });
+$('#btnInstall').addEventListener('click', async () => {
+  if (deferredInstall) {
+    deferredInstall.prompt();
+    const r = await deferredInstall.userChoice.catch(() => null);
+    deferredInstall = null;
+    if (r && r.outcome === 'accepted') $('#btnInstall').hidden = true;
+  } else {
+    $('#installHelp').hidden = !$('#installHelp').hidden;
+  }
+});
+$('#closeInstallHelp').addEventListener('click', () => { $('#installHelp').hidden = true; });
+
 init();

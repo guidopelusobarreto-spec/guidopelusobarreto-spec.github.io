@@ -121,3 +121,9 @@ a{color:var(--accent);text-underline-offset:.15em}
 .offer b,.vendor-order h3,details>summary .name{overflow-wrap:anywhere}
 fieldset{min-width:0}fieldset.chips label{min-width:0;overflow-wrap:anywhere}
 html[data-size="muy-grande"] .tabs,html[data-size="enorme"] .tabs{position:static}.tag{border-radius:.6rem}
+
+.top{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between}
+.install{min-height:2.75rem;padding:.45rem .9rem;border:0;border-radius:.7rem;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:.95rem}
+.install-help{flex:1 1 100%;margin:.3rem 0 0}
+.install-help ul{margin:.3rem 0 .6rem;padding-left:1.2rem}.install-help li{margin:.35rem 0}
+[hidden]{display:none!important}
