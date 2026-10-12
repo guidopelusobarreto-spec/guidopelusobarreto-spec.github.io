@@ -9,6 +9,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
+<script>try{var u=JSON.parse(localStorage.getItem('optcompras-ui')||'{}');document.documentElement.dataset.size=u.size||'grande';document.documentElement.dataset.contrast=u.contrast||'normal';}catch(e){document.documentElement.dataset.size='grande';}</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -86,6 +87,17 @@
 
   <!-- AJUSTES -->
   <section id="tab-ajustes" class="tab">
+    <div class="card">
+      <h2>Lectura</h2>
+      <p class="hint">Tamaño de letra de toda la app. El diseño se reorganiza para que nada se corte.</p>
+      <div class="seg" id="sizeSeg" role="group" aria-label="Tamaño de letra">
+        <button data-size="normal" aria-pressed="false">A</button>
+        <button data-size="grande" aria-pressed="false" style="font-size:1.1em">A</button>
+        <button data-size="muy-grande" aria-pressed="false" style="font-size:1.25em">A</button>
+        <button data-size="enorme" aria-pressed="false" style="font-size:1.4em">A</button>
+      </div>
+      <label class="inline"><input type="checkbox" id="contrastHigh"> Alto contraste (textos secundarios en negro)</label>
+    </div>
     <div class="card">
       <h2>Tipos de cambio</h2>
       <p class="hint">Unidades de cada divisa por 1 € (BCE). Se aplican a todas las ofertas.</p>

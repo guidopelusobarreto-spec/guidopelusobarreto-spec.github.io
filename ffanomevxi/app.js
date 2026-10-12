@@ -249,7 +249,7 @@ function offerRow(o, p) {
   return `<div class="offer" data-oid="${o.id}">
     <input type="checkbox" class="oActive" data-oid="${o.id}" ${o.active ? 'checked' : ''} aria-label="Usar oferta">
     <div><b>${esc(v ? v.name : o.vendorId)}</b>${v && !v.active ? ' <span class="tag bad">proveedor desactivado</span>' : ''}<div class="meta">${esc(o.desc)} · ${o.price} ${esc(o.currency)} × ${o.units} · ${esc(o.status || '')}${o.url ? ` · <a href="${esc(o.url)}" target="_blank" rel="noopener">fuente</a>` : ''}</div></div>
-    <div style="text-align:right"><div class="eur">${eur(offerEUR(o) * (p.qty || 1))}</div><button class="mini oEdit" data-oid="${o.id}">Editar</button></div>
+    <div class="side"><span class="eur">${eur(offerEUR(o) * (p.qty || 1))}</span><button class="mini oEdit" data-oid="${o.id}">Editar</button></div>
     <div class="edit"><div class="grid3">
       <label>Precio<input type="number" step="0.01" class="oPrice" data-oid="${o.id}" value="${o.price}"></label>
       <label>Divisa<select class="oCur" data-oid="${o.id}">${Object.keys(S.fx).map(c => `<option ${c === o.currency ? 'selected' : ''}>${c}</option>`).join('')}</select></label>
@@ -333,7 +333,18 @@ function renderSettings() {
   $('#fxUSD').value = S.fx.USD; $('#fxINR').value = S.fx.INR;
   $('#excludedInfo').textContent = (S.excluded || []).length ? 'Excluidos de la tabla: ' + S.excluded.join(' · ') : '';
 }
+function uiPrefs() { try { return JSON.parse(localStorage.getItem('optcompras-ui') || '{}'); } catch (e) { return {}; } }
+function setUI(k, v) { const u = uiPrefs(); u[k] = v; try { localStorage.setItem('optcompras-ui', JSON.stringify(u)); } catch (e) {} applyUI(); }
+function applyUI() {
+  const u = uiPrefs(); const el = document.documentElement;
+  el.dataset.size = u.size || 'grande'; el.dataset.contrast = u.contrast || 'normal';
+  $$('#sizeSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.size === el.dataset.size ? 'true' : 'false'));
+  $('#contrastHigh').checked = el.dataset.contrast === 'alto';
+}
 function bindSettings() {
+  $$('#sizeSeg button').forEach(b => b.addEventListener('click', () => setUI('size', b.dataset.size)));
+  $('#contrastHigh').addEventListener('change', e => setUI('contrast', e.target.checked ? 'alto' : 'normal'));
+  applyUI();
   ['USD', 'INR'].forEach(c => $('#fx' + c).addEventListener('change', e => { const v = num(e.target.value); if (!v) return toast('Tipo no válido'); S.fx[c] = v; save(); renderProducts(); toast('Tipo de cambio actualizado'); }));
   $('#btnExport').addEventListener('click', () => {
     const blob = new Blob([JSON.stringify(S, null, 1)], { type: 'application/json' });
